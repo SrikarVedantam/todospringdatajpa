@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -33,6 +35,13 @@ public class UserRepositoryTest {
 
     }
 
-
+    @Test
+    public void using_pageable_stuff(){
+        PageRequest pageable = new PageRequest(0, 2);
+        Page<User> userPage = userRepository.findAll(pageable);
+        System.out.println(userPage);
+        System.out.println("------------------");
+        System.out.println(userPage.getContent());
+    }
 
 }
