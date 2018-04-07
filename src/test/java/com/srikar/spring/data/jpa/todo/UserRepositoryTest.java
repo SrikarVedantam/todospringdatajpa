@@ -29,10 +29,10 @@ public class UserRepositoryTest {
         Sort sort = new Sort(Sort.Direction.ASC, "name")
                 .and(new Sort(Sort.Direction.DESC, "userid"));
         Iterable<User> users = userRepository.findAll(sort);
+
         for(User user: users){
             System.out.println(user);
         }
-
     }
 
     @Test
